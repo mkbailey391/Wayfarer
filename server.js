@@ -15,9 +15,23 @@ const
     //usersRouter = require('./routes/users.js'),
     PORT = 3000;
 
-    app.use(express.json())
+//Middleware
+app.use(logger('dev'));
+app.use(cookieParser()); 
+app.use(express.urlencoded({extended: true})); 
+app.use(flash()); 
+app.use(methodOverride('_method'));
+app.use(express.json());
 
-    //Port up and running
-    app.listen(PORT, (err) => {
-        console.log(err || `Server running on port ${PORT}`)
+app.set('view engine', 'ejs');
+app.use(ejsLayouts);
+
+//Root Route
+app.get('/', (req,res) => {
+    res.render('index')
+    })
+
+//Port up and running
+app.listen(PORT, (err) => {
+    console.log(err || `Server running on port ${PORT}`)
     })

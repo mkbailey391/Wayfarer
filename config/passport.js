@@ -41,7 +41,4 @@ const
         })
     }))
 
-
-
-
     module.exports = passport;
