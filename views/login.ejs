@@ -1,0 +1,20 @@
+<div class="col-sm-6 offset-md-3">
+        <h1>Log In</h1>
+        <% if (message.length > 0) { %>
+          <div class="alert alert-danger"><%= message %></div>
+        <% } %>
+        <form method="post" action="/users/login">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+        <hr>
+        <p>Or, <a href="/users/signup">Sign Up</a></p>
+        <p>Go back <a href="/">home</a>.</p>
+      </div>

@@ -12,7 +12,7 @@ const
 	MongoDBStore = require('connect-mongodb-session')(session),
 	passport = require('passport'),
 	passportConfig = require('./config/passport'),
-    //usersRouter = require('./routes/users.js'),
+    usersRouter = require('./routes/users.js'),
     PORT = 3000;
 
 const mongoConnectionString = 'mongodb://localhost/project-3-wayfarer'; 
@@ -61,6 +61,10 @@ app.use((req, res, next) => {
 app.get('/', (req,res) => {
     res.render('index')
     })
+
+app.use('/users', usersRouter)
+
+
 
 //Port up and running
 app.listen(PORT, (err) => {

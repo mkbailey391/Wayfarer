@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
-
-  <body>
-      <%- body %>
-
-    <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="js/materialize.min.js"></script>
-  </body>
+<head>
+    <title>Passport Authentication Practice</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <% if (loggedIn){ %>
+            <span>Logged in as:</span><a href="/users/profile"><%= currentUser.name %></a>
+            <a href="/users/profile/edit">Edit Profile</a>
+        <% } else { %>
+            <a href="/users/login">Log In</a>
+            <a href="/users/signup">Sign Up</a>
+        <% } %>
+        <%- body %>
+    </div>
+</body>
 </html>
