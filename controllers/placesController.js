@@ -34,3 +34,11 @@ exports.update = (req, res) =>{
         res.json({success: true, payload: place});
     })
 }
+
+//delete a place. 
+exports.delete = (req, res) =>{
+    Place.findByIdAndDelete(req.params.id, (err, deletedPlace) =>{
+        if (err) res.json({success: false, err});
+        res.json({success: true, deletedPlace});
+    })
+}

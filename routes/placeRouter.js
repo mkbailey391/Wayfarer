@@ -9,6 +9,8 @@ const
     router.get('/:id', Place.show);
     //update place.
     router.put('/:id', Place.update);
+    //delete place.
+    router.delete('/:id', Place.delete);
 
     module.exports = router;
 
