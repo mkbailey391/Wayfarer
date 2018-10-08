@@ -9,7 +9,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-    <div class="container">
         <% if (loggedIn){ %>
             <span>Logged in as:</span><a href="/users/profile"><%= currentUser.name %></a>
             <a href="/users/profile/edit">Edit Profile</a>
@@ -18,6 +17,5 @@
             <a href="/users/signup">Sign Up</a>
         <% } %>
         <%- body %>
-    </div>
 </body>
 </html>
