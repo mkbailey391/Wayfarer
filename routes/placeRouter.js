@@ -12,6 +12,7 @@ const
 
     // Post Router
     router.post('/:place_id/posts', Place.createPost);
+    router.get('/:place_id/posts/new', Place.newPost);
     router.get('/:place_id/posts/:id', Place.showPost );
     router.put('/:place_id/posts/:id', Place.updatePost);
     router.delete('/:place_id/posts/:id', Place.deletePost);

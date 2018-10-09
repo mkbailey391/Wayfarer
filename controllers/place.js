@@ -63,6 +63,10 @@ exports.createPost = (req, res) => {
     })
 }
 
+exports.newPost =(req, res) => {
+    res.render('posts/new')
+};
+
 //show a post.
 exports.showPost = (req, res) => {
     let { place_id, id } = req.params;
