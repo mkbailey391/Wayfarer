@@ -23,7 +23,7 @@ exports.create = (req, res) =>{
 exports.show = (req, res) =>{
     Place.findById(req.params.place_id, (err, place) =>{
         if (err) res.json ({success: false, err});
-        res.render('cities/show'), ({success: true, place: place});
+        res.render('cities/show', {success: true, place});
     })
 }
 

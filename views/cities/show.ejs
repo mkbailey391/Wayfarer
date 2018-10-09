@@ -1,2 +1,25 @@
-<h1><%= Place.city %></h1>
-<img scr="<%= Place.picture %>"/>
+<div class="container">
+<h1><%= place.city %></h1>
+<img src="<%= place.picture %>"/>
+<% place.posts.forEach (p => { %>
+<div class="row">
+        <div class="col s12 m6">
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title"><%= p.title %></span>
+              <p>I am a very simple card. I am good at containing small bits of information.
+              I am convenient because I require little markup to use effectively.</p>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+    </div>
+
+
+
+
+
+
+
