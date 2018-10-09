@@ -1,17 +1,21 @@
 const
     express = require('express'),
     router = express.Router();
-    const Place = require('../controllers/placesController')
+    Place = require('../controllers/place');
 
+    //Place Router
     router.get('/', Place.index);
     router.post('/', Place.create);
-    //show place
     router.get('/:id', Place.show);
-    //update place.
     router.put('/:id', Place.update);
-    //delete place.
     router.delete('/:id', Place.delete);
 
+    // Post Router
+    router.post('/:place_id/posts', Place.createPost);
+    router.get('/:place_id/posts/:id', Place.showPost );
+    router.put('/:place_id/posts/:id', Place.updatePost);
+    router.delete('/:place_id/posts/:id', Place.deletePost);
+    
     module.exports = router;
 
 

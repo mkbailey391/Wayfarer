@@ -3,17 +3,16 @@ mongoose = require('mongoose');
 
 //Post Schema
 const postSchema = new mongoose.Schema({
-    name: String, 
-    country: String, 
-    image: String, 
-    user: {type:mongoose.Schema.Types.ObjectId, ref: 'User'}
+    title: String, 
+    body: String,  
+    author: {type:mongoose.Schema.Types.ObjectId, ref: 'User'}
 })
 
 //Create place schema. 
 const placeSchema = new mongoose.Schema({
     city: String, 
     picture: String, 
-    post: [postSchema]
+    posts: [postSchema]
 })
 
 //create model. 
