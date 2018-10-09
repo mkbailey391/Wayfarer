@@ -7,8 +7,7 @@ const User = require('../models/User');
 exports.index = (req, res)=>{
     Place.find({}, (err, places)=>{
         if (err) res.json({success: false, payload: err});
-        res.json({success: true, payload: places});
-        //res.render('places/index', {success: true, payload: places})
+        res.render('cities/index', {success: true, places: places})
     })
 }
 
@@ -22,15 +21,15 @@ exports.create = (req, res) =>{
 
 //Show a place
 exports.show = (req, res) =>{
-    Place.findById(req.params.id, (err, place) =>{
+    Place.findById(req.params.place_id, (err, place) =>{
         if (err) res.json ({success: false, err});
-        res.json({success: true, payload: place});
+        res.render('cities/show'), ({success: true, place: place});
     })
 }
 
 //update a place.
 exports.update = (req, res) =>{
-    Place.findByIdAndUpdate(req.params.id, req.body, (err, place) =>{
+    Place.findByIdAndUpdate(req.params.place_id, req.body, (err, place) =>{
         if (err) res.json({success: false, err});
         res.json({success: true, payload: place});
     })
@@ -53,7 +52,10 @@ exports.createPost = (req, res) => {
     Place.findById(place_id, (err, place)=>{
         if (err) res.json({ success: false, err});
      //use current user's id
-    place.posts.push({...req.body})
+        
+    // place.posts.push({...req.body, author:req.user })
+        place.posts.push({...req.body, author: '5bb9522b4a920c103f59806e' })
+
     place.save((err, place) =>{
         if (err) res.json({ success: false, err})
         res.json({ status: true, payload: place})

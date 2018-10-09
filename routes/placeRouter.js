@@ -6,9 +6,9 @@ const
     //Place Router
     router.get('/', Place.index);
     router.post('/', Place.create);
-    router.get('/:id', Place.show);
-    router.put('/:id', Place.update);
-    router.delete('/:id', Place.delete);
+    router.get('/:place_id', Place.show);
+    router.put('/:place_id', Place.update);
+    router.delete('/:place_id', Place.delete);
 
     // Post Router
     router.post('/:place_id/posts', Place.createPost);
