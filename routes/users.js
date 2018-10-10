@@ -1,7 +1,10 @@
 const
   express = require('express'),
   usersRouter = new express.Router(),
-  passport = require('passport')
+  router = express.Router(),
+  passport = require('passport'),
+  User = require('../controllers/user');
+  mongoose = require('mongoose');
 
   //login view
   usersRouter.get('/login', (req, res) => {
@@ -53,4 +56,8 @@ const
   }
 
 
+  router.get('/profile', User.index);
+  router.post('/profile', User.create);
+
   module.exports = usersRouter;
+  module.exports = router;
