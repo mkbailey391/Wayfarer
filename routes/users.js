@@ -1,7 +1,6 @@
 const
   express = require('express'),
-  usersRouter = new express.Router(),
-  router = express.Router(),
+  usersRouter = express.Router(),
   passport = require('passport'),
   User = require('../controllers/user');
   mongoose = require('mongoose');
@@ -27,10 +26,6 @@ const
     failureRedirect: "/users/signup"
   }));
 
-  usersRouter.get('/profile', isLoggedIn, (req, res) =>{
-    res.render('profile', { user: req.user });
-  });
-
   usersRouter.patch('/profile', isLoggedIn, (req, res) =>{
     if (!req.body.password) delete req.body.password;
     Object.assign(req.user, req.body);
@@ -48,16 +43,14 @@ const
   usersRouter.get('/logout', (req, res) => {
     req.logout();
     res.redirect('/');
-  })
+  });
+
+  usersRouter.get('/profile', isLoggedIn, User.show);
+  usersRouter.get('/:id', isLoggedIn, User.show)
 
   function isLoggedIn(req, res, next) {
     if(req.isAuthenticated()) return next ()
     res.redirect('/users/login');
   }
 
-
-  router.get('/profile', User.index);
-  router.post('/profile', User.create);
-
-  module.exports = usersRouter;
-  module.exports = router;
+module.exports = usersRouter;

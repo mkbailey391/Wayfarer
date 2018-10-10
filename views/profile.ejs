@@ -6,8 +6,10 @@
                 <a href="/users/logout" class="btn btn-warning btn-sm">Logout</a>
             </p>
         </div>
-    </div>
-    
+    </div>  
+    <% posts.forEach(p => { %>
+      <%= p.title %>
+    <% }) %>
     <h2>Recent Posts</h2>
     <div class="card" style="margin-bottom: 2rem">
       <div class="card-body">

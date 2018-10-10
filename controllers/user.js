@@ -1,6 +1,7 @@
 const
-mongoose = require('mongoose'),
-User = require('../models/User');
+    mongoose = require('mongoose'),
+    User = require('../models/User'),
+    Place = require('../models/Place');
 
 exports.index = (req, res) => {
     User.find({}, (err, user) => {
@@ -17,22 +18,24 @@ exports.create = (req, res) => {
     })
 }
 
-//exports.show = async (req, res) => {
-//     let id = mongoose.Types.ObjectId(req.params.id);
-//     let user = await User.findById(id);
-//     Place.aggregate([{
-//         // This is going to return the entire card
-//         $match: { $or: [{'fights.fighterOne': id  }, { 'fights.fighterTwo': id}]}},
-//         // Destructuring every fight in the fights array into their own elements.
-//         { $unwind: '$fights'}, {
-//         // This is going only return the fights where the requested ID matches fighterOne or fighterTwo
-//         $match: { $or: [{'fights.fighterOne': id  }, { 'fights.fighterTwo': id}]}}, {
-//         // Formats the data that we are requesting.
-//         $project: {
-//             weightClass: '$fights.weightClass',
-//             opponent: '$fights.fighterTwo'
-//         }}
-//     ]).exec((err, fights) => {
-//         if (err) res.json({ status: false, err })
-//         res.json({ success: true, payload: fights })
-//     })
+exports.show = async (req, res) => {
+    let { id } = req.params;
+    id = id ? mongoose.Types.ObjectId(id) : req.user._id
+    let user = await User.findById(id);
+    Place.aggregate([{
+        // This is going to return the entire card
+        $match: {'posts.author': id  }},
+        // Destructuring every fight in the fights array into their own elements.
+        { $unwind: '$posts'}, {
+        // This is going only return the fights where the requested ID matches fighterOne or fighterTwo
+        $match: {'posts.author': id  }}, {
+        // Formats the data that we are requesting.
+        $project: {
+            title: '$posts.title',
+            body: '$posts.body'
+        }}
+    ]).exec((err, posts) => {
+        if (err) res.json({ status: false, err })
+        res.render('profile', { success: true, user, posts })
+    })
+}
