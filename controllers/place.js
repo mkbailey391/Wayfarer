@@ -54,18 +54,20 @@ exports.createPost = (req, res) => {
         if (err) res.json({ success: false, err});
      //use current user's id
         
-    // place.posts.push({...req.body, author:req.user })
-        post.posts.push({...req.body, author: '5bb9522b4a920c103f59806e' })
+    place.posts.push({...req.body, author:req.user })
+       // post.posts.push({...req.body, author: '5bb9522b4a920c103f59806e' })
 
-    post.save((err, post) =>{
+    place.save((err, place) =>{
         if (err) res.json({ success: false, err})
-        res.redirect('cities/show', {status: true, post })
+        res.redirect(`/cities/${place_id}`)
         })
     })
 }
 
 exports.newPost =(req, res) => {
-    res.render('posts/new')
+    let { place_id, id } = req.params;
+
+    res.render('posts/new', {place_id})
 };
 
 //show a post.
@@ -75,7 +77,7 @@ exports.showPost = (req, res) => {
         if (err) res.json({ success: false, err });
         if (showplace.posts.id(id)) {
             let post = showplace.posts.id(id)
-            res.json({ success: true, payload: post })
+            res.render('posts/show', {post})
         } else {
             res.json({ success: false, payload: "Post does not exist." })
         }
