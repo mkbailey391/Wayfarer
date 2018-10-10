@@ -1,34 +1,22 @@
+<div class="container">
 <div class="jumbotron jumbotron-fluid">
-        <div class="container">
+          <div class="user-name">
             <h1 class="display-4"><%= user.name %></h1>
             <p class="lead">
                 <%= user.email %> | <%= user._id %> 
                 <a href="/users/logout" class="btn btn-warning btn-sm">Logout</a>
             </p>
+            </div>
         </div>
     </div>  
     <% posts.forEach(p => { %>
-      <%= p.title %>
-    <% }) %>
     <h2>Recent Posts</h2>
     <div class="card" style="margin-bottom: 2rem">
       <div class="card-body">
-        <h5 class="card-title">Post Title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aperiam maiores aliquid quibusdam quasi neque aliquam ut eius magnam nisi soluta doloribus corrupti obcaecati optio repellendus aut voluptatem, velit minus...</p>
+        <h5 class="card-title"><%= p.title %></h5>
+        <p class="card-text"><%= p.body %></p>
         <a href="#" class="btn btn-primary">Read More</a>
       </div>
     </div>
-    <div class="card" style="margin-bottom: 2rem">
-      <div class="card-body">
-        <h5 class="card-title">Post Title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aperiam maiores aliquid quibusdam quasi neque aliquam ut eius magnam nisi soluta doloribus corrupti obcaecati optio repellendus aut voluptatem, velit minus...</p>
-        <a href="#" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
-    <div class="card" style="margin-bottom: 2rem">
-      <div class="card-body">
-        <h5 class="card-title">Post Title</h5>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum aperiam maiores aliquid quibusdam quasi neque aliquam ut eius magnam nisi soluta doloribus corrupti obcaecati optio repellendus aut voluptatem, velit minus...</p>
-        <a href="#" class="btn btn-primary">Read More</a>
-      </div>
-    </div>
+      <% }) %>
+  </div>
