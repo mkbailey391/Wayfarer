@@ -55,11 +55,11 @@ exports.createPost = (req, res) => {
      //use current user's id
         
     // place.posts.push({...req.body, author:req.user })
-        place.posts.push({...req.body, author: '5bb9522b4a920c103f59806e' })
+        post.posts.push({...req.body, author: '5bb9522b4a920c103f59806e' })
 
-    place.save((err, place) =>{
+    post.save((err, post) =>{
         if (err) res.json({ success: false, err})
-        res.json({ status: true, payload: place})
+        res.redirect('cities/show', {status: true, post })
         })
     })
 }
