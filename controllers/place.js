@@ -77,7 +77,7 @@ exports.showPost = (req, res) => {
         if (err) res.json({ success: false, err });
         if (showplace.posts.id(id)) {
             let post = showplace.posts.id(id)
-            res.render('posts/show', {post})
+            res.render('posts/show', {post, showplace})
         } else {
             res.json({ success: false, payload: "Post does not exist." })
         }
@@ -117,6 +117,7 @@ exports.editPost = (req, res) => {
 
 // Delete a post.
 exports.deletePost = (req, res) =>{
+    console.log("delete")
     let { place_id, id } = req.params;
     Place.findById(place_id, (err, deletedPost) =>{
         if (err) res.json({ success: false, err});
