@@ -84,24 +84,36 @@ exports.showPost = (req, res) => {
     })
 };
 
-// update a post. 
-exports.updatePost = (req, res)=>{
+exports.editPost = (req, res) => {
     let { place_id, id } = req.params;
+    Place.findById(place_id, (err, place) => {
+    if (err) res.json({success: false, payload: err});
+    let posts = place.posts.id(id);
+    if (posts){
+        res.render('posts/edit', {success: true, post: posts, place_id, id});
+    }else {
+        res.json({ success: false, payload: "Post does not exist."});
+    }
+    })
+ }
+ 
+ exports.updatePost = (req, res) => {
+    let {place_id, id} = req.params;
     let { body } = req;
-    Place.findById(place_id, (err, updatedPost) =>{
+    Place.findById(place_id, (err, updatedpost) => {
         if (err) res.json({ success: false, err});
-        let post = updatedPost.posts.id(id)
-        if(post) {
-            for (let key in body) { post[key]= body[key]}
-            updatedPost.save((err, updatedPost) =>{
+        let post = updatedpost.posts.id(id)
+        if (post) {
+            for (let key in body) { post[key] = body[key]}
+            updatedpost.save((err, updatedpost) => {
                 if (err) res.json({ success: false, err});
-                res.json({ success: true, payload: updatedPost})
+                res.redirect(`/cities/${place_id}`)
             })
-        }else{
+        }else {
             res.json({ success: false, payload: "Place does not exist."})
         }
     })
-};
+ }
 
 // Delete a post.
 exports.deletePost = (req, res) =>{
@@ -112,8 +124,7 @@ exports.deletePost = (req, res) =>{
         if (post) {
             post.remove();
             deletedPost.save((err, deletedPost) =>{
-                if (err) res.json ({ success: false, err});
-                res.json({ success: true, payload: deletedPost});
+            res.redirect(`/cities/${place_id}`, deletedPost)
             })
         }else {
             res.json({ success: false, payload: "Post does not exist."})

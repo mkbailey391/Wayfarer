@@ -36,6 +36,7 @@ exports.show = async (req, res) => {
         }}
     ]).exec((err, posts) => {
         if (err) res.json({ status: false, err })
+        console.log("POSTS")
         res.render('profile', { success: true, user, posts })
     })
 }
