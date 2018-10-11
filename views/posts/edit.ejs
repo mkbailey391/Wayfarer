@@ -1,7 +1,7 @@
 <div class="container">
     <div class="col-sm-6 offset-md-3">
         <h1>Edit Post:</h1>
-        <form method="post" action="/locations/<%= place_id %>/posts/<%= id %>?_method=PUT">
+        <form method="post" action="/cities/<%= place_id %>/posts/<%= id %>?_method=PUT">
           <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" id="title" name="title" value="<%= post.title %>">
