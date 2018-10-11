@@ -1,14 +1,14 @@
 
 <div class="container">
-<img src="<%= place.picture %>" style="height: 400px;"/>
+<img src="<%= place.picture %>">
 <% if (loggedIn){ %>
   <a href= "/cities/<%= place._id %>/posts/new" class="btn waves-effect waves-light" type="submit" name="action">Add a post</a>
   <% } %>
 <% place.posts.forEach (p => { %>
 <div class="row">
         <div class="col s12 m6">
-          <div class="card grey darken-1">
-            <div class="card-content white-text">
+          <div class="card white-1">
+            <div class="card-content black-text">
               <span class="card-title"><%= p.title %></span>
               <p><%= p.body %></p>
              
@@ -24,6 +24,7 @@
         </div>
       <% }) %>
     </div>
+
     
 
 
