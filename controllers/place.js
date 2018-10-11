@@ -85,6 +85,7 @@ exports.showPost = (req, res) => {
 };
 
 exports.editPost = (req, res) => {
+    if (!req.user) res.json({ success: false, payload: "You're not logged in"})
     let { place_id, id } = req.params;
     Place.findById(place_id, (err, place) => {
     if (err) res.json({success: false, payload: err});
@@ -98,6 +99,8 @@ exports.editPost = (req, res) => {
  }
  
  exports.updatePost = (req, res) => {
+    if (!req.user) res.json({ success: false, payload: "You're not logged in"})
+
     let {place_id, id} = req.params;
     let { body } = req;
     Place.findById(place_id, (err, updatedpost) => {

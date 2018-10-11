@@ -9,12 +9,14 @@
             <div class="card-content white-text">
               <span class="card-title"><%= p.title %></span>
               <p><%= p.body %></p>
+
+              <% if (loggedIn){ %>
               <div class="card-action">
                     <a href="/cities/<%= place._id %>/posts/<%= p._id %>">See More</a>
                     <a href="/cities/<%= place._id %>/posts/<%= p._id %>/edit">Edit</a>
                     <a href=='/cities/<%= place._id %>/posts/<%= p._id %>?_method=DELETE' method="POST" action='/cities/<%= place._id %>/posts/<%= p._id %>?_method=DELETE'></a>
-                </form>
                 </div>
+                <% } %>
             </div>
             </div>
           </div>
