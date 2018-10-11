@@ -99,13 +99,14 @@ exports.editPost = (req, res) => {
  }
  
  exports.updatePost = (req, res) => {
-    if (!req.user) res.json({ success: false, payload: "You're not logged in"})
+    //if (!req.user) res.json({ success: false, payload: "You're not logged in"})
 
     let {place_id, id} = req.params;
     let { body } = req;
     Place.findById(place_id, (err, updatedpost) => {
         if (err) res.json({ success: false, err});
         let post = updatedpost.posts.id(id)
+        //check if post.author 
         if (post) {
             for (let key in body) { post[key] = body[key]}
             updatedpost.save((err, updatedpost) => {

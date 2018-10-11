@@ -1,18 +1,17 @@
 <nav>
         <div class="nav-wrapper">
-        <a href="#" class="brand-logo">Wayfarer</a>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <% if (loggedIn){ %>
-            <ul>
+        <a href="/" class="brand-logo">Wayfarer</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <% if (loggedIn) { %>
                 <li><span>Logged in as:</span></li>
                 <li><a href="/users/profile"><%= currentUser.name %></a></li>
                 <li><a href="/users/profile/edit">Edit Profile</a></li>
-            </ul>
-                <% } else { %>
-            <li><a href="/users/login">Log In</a></li>
-            <li><a href="/users/signup">Sign Up</a></li>
-            </ul>
+                <li><a href="/users/logout">Logout</a></li>
+             <% } else { %>
+                <li><a href="/users/login">Log In</a></li>
+                <li><a href="/users/signup">Sign Up</a></li>
             <% } %>
+            </ul>
         </div>
     </div> 
 </nav>
