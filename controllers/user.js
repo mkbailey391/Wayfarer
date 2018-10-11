@@ -1,6 +1,7 @@
 const
     mongoose = require('mongoose'),
     User = require('../models/User'),
+    moment = require('moment'),
     Place = require('../models/Place');
 
 exports.index = (req, res) => {
@@ -37,6 +38,6 @@ exports.show = async (req, res) => {
     ]).exec((err, posts) => {
         if (err) res.json({ status: false, err })
         console.log("POSTS")
-        res.render('profile', { success: true, user, posts })
+        res.render('profile', { success: true, user, posts, moment })
     })
 }

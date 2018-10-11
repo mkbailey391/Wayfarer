@@ -10,10 +10,11 @@
               <span class="card-title"><%= p.title %></span>
               <p><%= p.body %></p>
               <div class="card-action">
-                    <a href="/cities/<%= place._id %>/posts/<%= p._id %>">See Post</a>
-                    <a href="/cities/<%= place._id %>/posts/<%= p._id %>/edit">Edit a Post</a>
-                    <a href="/cities/<%= place._id %>/posts/<%= p._id %>">Delete Post</a>
-                  </div>
+                    <a href="/cities/<%= place._id %>/posts/<%= p._id %>">See More</a>
+                    <a href="/cities/<%= place._id %>/posts/<%= p._id %>/edit">Edit</a>
+                    <a href=='/cities/<%= place._id %>/posts/<%= p._id %>?_method=DELETE' method="POST" action='/cities/<%= place._id %>/posts/<%= p._id %>?_method=DELETE'></a>
+                </form>
+                </div>
             </div>
             </div>
           </div>

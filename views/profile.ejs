@@ -3,6 +3,8 @@
           <div class="user-name">
             <h1 class="display-4"><%= user.name %></h1>
             <p class="lead">
+              <%= moment(user.createdAt).fromNow()%>
+              
                 <%= user.email %> | <%= user._id %> 
                 <a href="/users/logout" class="btn btn-warning btn-sm">Logout</a>
             </p>
