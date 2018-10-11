@@ -49,6 +49,7 @@ exports.delete = (req, res) =>{
 
 // Create a post. 
 exports.createPost = (req, res) => {
+    if (!req.user) res.json({ success: false, payload: "You're not logged in"})
     let { place_id } = req.params;
     Place.findById(place_id, (err, place)=>{
         if (err) res.json({ success: false, err});

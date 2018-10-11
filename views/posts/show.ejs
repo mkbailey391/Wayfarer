@@ -9,10 +9,11 @@
           <p>By:  <%= post.author %></p>
         </div>
         <div class="card-action">
-        
+            <% if (loggedIn && String(currentUser._id) === String(post.author)) { %>        
         <form method="POST" action="/cities/<%=showplace._id%>/posts/<%=post._id%>?_method=DELETE">
           <button class="btn btn-danger btn-block" type="submit">Delete</button>
        </form>
+       <% } %>
     </div>
       </div>
     </div>
