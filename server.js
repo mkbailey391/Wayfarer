@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 //Dependencies
 const
 	express = require('express'),
@@ -16,10 +18,10 @@ const
 	placeRouter = require('./routes/placeRouter');
     PORT = 3000;
 
-const mongoConnectionString = 'mongodb://localhost/project-3-wayfarer'; 
+// const mongoConnectionString = 'mongodb://localhost/project-3-wayfarer'; 
 
 // mongoose connection
-mongoose.connect(mongoConnectionString, (err) => {
+mongoose.connect(process.env.MONGOD_URI, (err) => {
     console.log(err || "Connected to MongoDB (passport-authentication)")
 })
 
