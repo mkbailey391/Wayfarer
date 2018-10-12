@@ -26,7 +26,7 @@ mongoose.connect(process.env.MONGOD_URI, (err) => {
 })
 
 const store = new MongoDBStore({
-    uri: mongoConnectionString,
+    uri: process.env.MONGOD_URI,
     collection: 'sessions'
 });
 
