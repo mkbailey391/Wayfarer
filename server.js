@@ -21,12 +21,12 @@ const
 // const mongoConnectionString = 'mongodb://localhost/project-3-wayfarer'; 
 
 // mongoose connection
-mongoose.connect(process.env.MONGOD_URI, (err) => {
+mongoose.connect(process.env.MONGODB_URI, (err) => {
     console.log(err || "Connected to MongoDB (passport-authentication)")
 })
 
 const store = new MongoDBStore({
-    uri: process.env.MONGOD_URI,
+    uri: process.env.MONGODB_URI,
     collection: 'sessions'
 });
 
