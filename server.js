@@ -16,7 +16,6 @@ const
 	passportConfig = require('./config/passport'),
 	usersRouter = require('./routes/users.js'),
 	placeRouter = require('./routes/placeRouter');
-    PORT = 3000;
 
 // const mongoConnectionString = 'mongodb://localhost/project-3-wayfarer'; 
 
@@ -71,6 +70,6 @@ app.use('/cities', placeRouter);
 
 
 //Port up and running
-app.listen(PORT, (err) => {
-    console.log(err || `Server running on port ${PORT}`);
+app.listen(process.env.PORT, (err) => {
+    console.log(err || `Server running on port ${process.env.PORT}`);
 })
